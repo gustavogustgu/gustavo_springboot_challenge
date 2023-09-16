@@ -1,10 +1,10 @@
 package com.example.gustavo_springboot_challenge.models;
 
 public enum Brand {
-    FORD ("FORD"),
-    CHEVROLET("CHEVROLET"),
+    FORD("Ford"),
+    CHEVROLET("Chevrolet"),
     BMW("BMW"),
-    VOLVO("VOLVO");
+    VOLVO("Volvo");
 
     private final String brandName;
     Brand(String brand) {

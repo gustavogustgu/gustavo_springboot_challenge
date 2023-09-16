@@ -8,9 +8,8 @@ import lombok.Setter;
 @Setter
 public class CreationCarDto {
 
-
     @NotBlank
-    private String model;
+    private String name;
     @NotBlank
     private Brand brand;
     @NotBlank

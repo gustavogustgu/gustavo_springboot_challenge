@@ -9,7 +9,7 @@ public class CarDto {
 
     private String chassiId;
 
-    private String model;
+    private String name;
 
     private Brand brand;
 
