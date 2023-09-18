@@ -1,15 +1,17 @@
 package com.example.gustavo_springboot_challenge.dtos;
+
 import com.example.gustavo_springboot_challenge.models.Brand;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
-public class CarDto {
+@AllArgsConstructor
+@NoArgsConstructor
+public class CarResponseDto {
 
-    private String chassiId;
+    private Long chassiId;
 
-    private String name;
+    private String model;
 
     private Brand brand;
 

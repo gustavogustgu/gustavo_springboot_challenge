@@ -1,12 +1,16 @@
 package com.example.gustavo_springboot_challenge.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity(name="cars")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CarModel {
 
     @Id
@@ -22,6 +26,6 @@ public class CarModel {
     @Column(nullable = false)
     private String color;
 
-    @Column(nullable = false, length = 9)
+    @Column(nullable = false)
     private String fabricationYear;
 }

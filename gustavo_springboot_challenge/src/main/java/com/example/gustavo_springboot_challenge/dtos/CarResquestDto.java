@@ -1,15 +1,17 @@
 package com.example.gustavo_springboot_challenge.dtos;
+
 import com.example.gustavo_springboot_challenge.models.Brand;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
-public class CreationCarDto {
+@AllArgsConstructor
+@NoArgsConstructor
+public class CarResquestDto {
 
     @NotBlank
-    private String name;
+    private String model;
     @NotBlank
     private Brand brand;
     @NotBlank

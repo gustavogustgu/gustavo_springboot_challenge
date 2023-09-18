@@ -5,7 +5,11 @@ import jakarta.persistence.Id;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface CarRepository  extends JpaRepository<CarModel, Id> {
+import java.util.List;
+import java.util.Optional;
 
+
+@Repository
+public interface CarRepository extends JpaRepository<CarModel, Id> {
+    //Optional<CarModel> findById(Long chassiId);
 }
