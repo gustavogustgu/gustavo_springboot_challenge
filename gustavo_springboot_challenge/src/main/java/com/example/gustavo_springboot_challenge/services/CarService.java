@@ -8,6 +8,8 @@ import com.example.gustavo_springboot_challenge.models.CarModel;
 import com.example.gustavo_springboot_challenge.repositories.CarRepository;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -25,13 +27,17 @@ public class CarService {
         return carRepository.findAll();
     }
 
-    public Optional<CarModel> findById(Long chassiId){
-        return carRepository.findById(chassiId);
+    public CarResponseDto findById(Long chassiId){
+        CarModel carModel = carRepository.findById(chassiId).get();
+        return CarMapper.toCarResponse(carModel);
     }
+
+
 
     public CarResponseDto save(CarResquestDto carResquestDto) {
         CarModel carModel = CarMapper.toCarRequest(carResquestDto);
         var response = carRepository.save(carModel);
         return CarMapper.toCarResponse(response);
     }
+
 }

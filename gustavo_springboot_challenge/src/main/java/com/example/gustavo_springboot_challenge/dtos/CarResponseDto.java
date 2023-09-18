@@ -18,4 +18,5 @@ public class CarResponseDto {
     private String color;
 
     private String fabricationYear;
+
 }

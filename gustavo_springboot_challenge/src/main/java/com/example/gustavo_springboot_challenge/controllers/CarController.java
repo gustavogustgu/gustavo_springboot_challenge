@@ -33,9 +33,7 @@ public class CarController {
     }
 
    @GetMapping(value = "/{chassiId}")
-   public ResponseEntity<CarResponseDto> findById(@PathVariable(name = "chassiId") Long chassiId){
-        Optional<CarModel> optCar = carService.findById(chassiId);
-       return optCar.map(car -> ResponseEntity.status(HttpStatus.OK).body(CarMapper
-              .toCarResponse(car))).orElseGet(() -> ResponseEntity.notFound().build());
+   public CarResponseDto findById(@PathVariable(name = "chassiId") Long chassiId){
+        return carService.findById(chassiId);
    }
 }
