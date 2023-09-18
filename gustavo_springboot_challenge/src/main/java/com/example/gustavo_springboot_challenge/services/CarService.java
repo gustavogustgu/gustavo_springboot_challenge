@@ -1,10 +1,16 @@
 package com.example.gustavo_springboot_challenge.services;
 
+
+import com.example.gustavo_springboot_challenge.dtos.CarResponseDto;
+import com.example.gustavo_springboot_challenge.dtos.CarResquestDto;
 import com.example.gustavo_springboot_challenge.mapper.CarMapper;
 import com.example.gustavo_springboot_challenge.models.CarModel;
 import com.example.gustavo_springboot_challenge.repositories.CarRepository;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -19,11 +25,13 @@ public class CarService {
         return carRepository.findAll();
     }
 
-    /*public Optional<CarModel> findById(Long chassiId){
+    public Optional<CarModel> findById(Long chassiId){
         return carRepository.findById(chassiId);
-    }*/
+    }
 
-    public CarModel saveCar(CarModel carModel){
-        return carRepository.save(carModel);
+    public CarResponseDto save(CarResquestDto carResquestDto) {
+        CarModel carModel = CarMapper.toCarRequest(carResquestDto);
+        var response = carRepository.save(carModel);
+        return CarMapper.toCarResponse(response);
     }
 }

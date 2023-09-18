@@ -21,11 +21,8 @@ public class CarController {
     private final CarService carService;
 
     @PostMapping
-    public ResponseEntity<CarResponseDto> save(@Valid @RequestBody CarResquestDto createCarDto){
-        CarModel carModel = CarMapper.toCarRequest(createCarDto);
-        CarModel saveCar = carService.saveCar(carModel);
-        CarResponseDto carDto = CarMapper.toCarResponse(carModel);
-        return ResponseEntity.status(HttpStatus.CREATED).body(carDto);
+    public ResponseEntity<CarResponseDto> salvar(@Valid @RequestBody CarResquestDto carResquestDto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(carService.save(carResquestDto));
     }
 
     @GetMapping
@@ -35,10 +32,10 @@ public class CarController {
         return ResponseEntity.status(HttpStatus.OK).body(carResponseDtos);
     }
 
-   /*@GetMapping(value = "/{chassiId}")
-    public ResponseEntity<CarResponseDto> findById(@PathVariable(name = "chassiId") Long chassiId){
+   @GetMapping(value = "/{chassiId}")
+   public ResponseEntity<CarResponseDto> findById(@PathVariable(name = "chassiId") Long chassiId){
         Optional<CarModel> optCar = carService.findById(chassiId);
-       return optCar.map(carModel -> ResponseEntity.status(HttpStatus.OK).body(CarMapper
-               .toCarResponse(carModel))).orElseGet(() -> ResponseEntity.notFound().build());
-   }*/
+       return optCar.map(car -> ResponseEntity.status(HttpStatus.OK).body(CarMapper
+              .toCarResponse(car))).orElseGet(() -> ResponseEntity.notFound().build());
+   }
 }
