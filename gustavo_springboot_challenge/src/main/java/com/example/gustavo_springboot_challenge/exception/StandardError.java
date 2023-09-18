@@ -13,4 +13,5 @@ public class StandardError {
 
     private Integer status;
     private String message;
+
 }
